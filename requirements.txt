@@ -4,5 +4,5 @@ scikit-learn
 openpxl
 numpy
 joblib
-pip
-os
+
+
