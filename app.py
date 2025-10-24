@@ -20,8 +20,10 @@ uploaded_file = st.file_uploader("Перетащите сюда файл Excel/c
 if uploaded_file:
     if uploaded_file.name.endswith('.xlsx'):
         df = pd.read_excel(uploaded_file)
-    else:
+    elif:
         df = pd.read_csv(uploaded_file)
+    else:
+        await
     st.write("Данные загружены!")
     st.dataframe(df)
 
@@ -59,6 +61,7 @@ if st.button("Предсказать отток"):
         st.error(f"🆘Высокий риск оттока (вероятность оттока: {probability[0][1]: .2%)}")
     else:
         st.success(f"🎉Низкий риск оттока (вероятность оттока: {probability[0][0]: .2%}")
+
 
 
 
