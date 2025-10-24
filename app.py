@@ -55,13 +55,16 @@ if uploaded_file:
    
 # Предсказание
 if st.button("Предсказать отток"):
-    prediction = model.predict(df)
-    probability = model.predict_proba(df)
-
-    if prediction[0] == 1:
-        st.error(f"🆘Высокий риск оттока (вероятность оттока: {probability[0][1]: .2%)}")       
+    if df is None:
+        st.warning("⚠️ Сначала загрузите данные!")
     else:
-        st.success(f"🎉Низкий риск оттока (вероятность оттока: {probability[0][0]: .2%}")
+        prediction = model.predict(df)
+        probability = model.predict_proba(df)
+
+        if prediction[0] == 1:
+            st.error(f"🆘Высокий риск оттока (вероятность оттока: {probability[0][1]: .2%})")
+        else:
+            st.success(f"🎉Низкий риск оттока (вероятность оттока: {probability[0][0]: .2%})")
 
 
 
