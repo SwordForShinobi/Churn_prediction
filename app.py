@@ -23,7 +23,7 @@ if uploaded_file:
     elif uploaded_file.name.endswith('.csv'): 
         df = pd.read_csv(uploaded_file)
     else:
-        await
+        continue
     st.write("Данные загружены!")
     st.dataframe(df)
 
@@ -61,6 +61,7 @@ if st.button("Предсказать отток"):
         st.error(f"🆘Высокий риск оттока (вероятность оттока: {probability[0][1]: .2%)}")
     else:
         st.success(f"🎉Низкий риск оттока (вероятность оттока: {probability[0][0]: .2%}")
+
 
 
 
