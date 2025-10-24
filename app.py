@@ -6,7 +6,7 @@ import sklearn
 # Загрузка модели
 @st.cache_resource
 def load_model():
-    with open('xgb_classifier.pkl', 'rb') as f:
+    with open('rfc_classifier.pkl', 'rb') as f:
         return pickle.load(f)
 
 model = load_model()
@@ -62,6 +62,7 @@ if st.button("Предсказать отток"):
         st.error(f"🆘Высокий риск оттока (вероятность оттока: {probability[0][1]: .2%)}")       
     else:
         st.success(f"🎉Низкий риск оттока (вероятность оттока: {probability[0][0]: .2%}")
+
 
 
 
