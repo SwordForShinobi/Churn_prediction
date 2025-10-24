@@ -17,6 +17,8 @@ st.title ("🔮Предсказание оттока клиентов")
 uploaded_file = st.file_uploader("Перетащите сюда файл Excel/csv с данными клиента",
                                 type=['xlsx', 'csv'])
 
+df = None # Инициализация df вне блока if uploaded_file, для обхода NameError
+
 if uploaded_file:
     if uploaded_file.name.endswith('.xlsx'):
         df = pd.read_excel(uploaded_file)
@@ -65,6 +67,7 @@ if st.button("Предсказать отток"):
             st.error(f"🆘Высокий риск оттока (вероятность оттока: {probability[0][1]: .2%})")
         else:
             st.success(f"🎉Низкий риск оттока (вероятность оттока: {probability[0][0]: .2%})")
+
 
 
 
