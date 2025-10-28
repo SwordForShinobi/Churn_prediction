@@ -6,8 +6,12 @@ import sklearn
 # Загрузка модели
 @st.cache_resource
 def load_model():
-    with open('rfc_classifier.pkl', 'rb') as f:
-        return pickle.load(f)
+    with zipfileZipFile('rfc_classifier.zip', 'r') as zip_ref:
+        model_files = [f for f in zip_ref.namelist() if f.endswith('.pkl')]
+        model_file = model_files[0]
+        with zip_ref.open(model_file) as f:
+            model = pickle.load(f)
+            return model
 
 model = load_model()
 
@@ -67,6 +71,7 @@ if st.button("Предсказать отток"):
             st.error(f"🆘Высокий риск оттока (вероятность оттока: {probability[0][1]: .2%})")
         else:
             st.success(f"🎉Низкий риск оттока (вероятность оттока: {probability[0][0]: .2%})")
+
 
 
 
