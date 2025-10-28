@@ -8,7 +8,7 @@ import io
 # Загрузка модели
 @st.cache_resource
 def load_model():
-    with zipfileZipFile('rfc_classifier.zip', 'r') as zip_ref:
+    with zipfile.ZipFile('rfc_classifier.zip', 'r') as zip_ref:
         model_files = [f for f in zip_ref.namelist() if f.endswith('.pkl')]
         model_file = model_files[0]
         with zip_ref.open(model_file) as f:
@@ -73,6 +73,7 @@ if st.button("Предсказать отток"):
             st.error(f"🆘Высокий риск оттока (вероятность оттока: {probability[0][1]: .2%})")
         else:
             st.success(f"🎉Низкий риск оттока (вероятность оттока: {probability[0][0]: .2%})")
+
 
 
 
