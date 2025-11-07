@@ -66,7 +66,7 @@ if st.button("Предсказать отток"):
     if df is None:
         st.warning("⚠️ Сначала загрузите данные!")
     else:
-                try:
+        try:
             predictions = model.predict(df)
             probabilities = model.predict_proba(df)
 
@@ -90,6 +90,7 @@ if st.button("Предсказать отток"):
             total = len(results)
             churn_count = (results['Прогноз оттока'] == 1).sum()
             st.info(f"📈 Из {total} клиентов предсказан отток у {churn_count} ({churn_count / total:.2%})")
+
 
 
 
