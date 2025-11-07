@@ -90,6 +90,9 @@ if st.button("Предсказать отток"):
             total = len(results)
             churn_count = (results['Прогноз оттока'] == 1).sum()
             st.info(f"📈 Из {total} клиентов предсказан отток у {churn_count} ({churn_count / total:.2%})")
+        except Exception as e:
+            st.error(f"❌ Ошибка при выполнении предсказания: {e}")
+
 
 
 
